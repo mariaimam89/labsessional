@@ -25,4 +25,4 @@ String patternofDeclaration = "(int|float|string|double|byte|chart|short|long) {
 		else
 			System.out.println("nothing matched, try again"); 
 		s.close();
-	}}
+	}}//sdquifbq
