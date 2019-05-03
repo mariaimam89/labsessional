@@ -1,0 +1,28 @@
+
+ 
+//Question no. 1: Build a lexical analyzer
+package laxicalAnanlyzer_lab_10;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class laxicalAnalayzer {
+	public static void main(String[] args) {
+		System.out.print("Enter any kind of statement to check: ");
+		Scanner s = new Scanner(System.in);
+		String input = s.nextLine();
+String patternofDeclaration = "(int|float|string|double|byte|chart|short|long) {1,}[A-Z a-z|_][A-Z a-z|0-9|_]*[^`~!@#$%^&*()-_+=?/.><,]*= [0-9].{0,1}[0-9]*;";
+		String patternofInput = "[A-Z|a-z|_][A-Z|a-z|_|0-9]*[^!@#$%^&*():<>+-=`~;,./?\\||]*";
+		String patternofOperators = "([A-Za-z]+ {0,})(\\+|-|/|\\*|%|\\||&&)( {0,}[A-Za-z|0-9])";
+		Matcher matchPatternDeclaration = Pattern.compile(patternofDeclaration).matcher(input);
+		Matcher matchPatternInput = Pattern.compile(patternofInput).matcher(input);
+		Matcher matchPatternOperators = Pattern.compile(patternofOperators).matcher(input);
+		if(matchPatternDeclaration.matches())
+			System.out.println("it is a correct "+matchPatternDeclaration.group(1) +" declaration statement");
+		else if(matchPatternInput.matches())
+			System.out.println("it is a correct identifier");
+		else if(matchPatternOperators.matches())
+			System.out.println("the operator used is: "+matchPatternOperators.group(2));
+		else
+			System.out.println("nothing matched, try again"); 
+		s.close();
+	}}
